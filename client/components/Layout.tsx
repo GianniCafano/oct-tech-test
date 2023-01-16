@@ -1,21 +1,19 @@
-import React from 'react'
-import Footer from './Footer';
-import Header from './Header';
+import React from "react";
+import Footer from "./Footer";
+import Header from "./Header";
 
-import { StyledLayoutMain } from '../styles/Layout.styles'
+import { StyledLayoutMain } from "../styles/Layout.styles";
 
 type LayoutProps = {
-    children: React.ReactNode;
-}
+  children: React.ReactNode;
+};
 
 export default function Layout({ children }: LayoutProps): React.ReactElement {
   return (
     <>
-        <Header />
-            <StyledLayoutMain>
-                {children}
-            </StyledLayoutMain>
-        <Footer />
+      <Header />
+      <StyledLayoutMain>{children}</StyledLayoutMain>
+      <Footer />
     </>
-  )
+  );
 }

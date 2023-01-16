@@ -1,16 +1,19 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
-import { StyledHeader, StyledHeaderLogoImg } from '../styles/Header.styles'
+import { StyledHeader, StyledHeaderLogoImg } from "../styles/Header.styles";
 
 export default function Header() {
   return (
-   <StyledHeader>
-        <Link href="/">
-            <a>
-                <StyledHeaderLogoImg src="/octopus-logo.svg" alt="Octopus Energy logo" />
-            </a>
-        </Link>
-   </StyledHeader>
-  )
+    <StyledHeader>
+      <Link href="/">
+        <a>
+          <StyledHeaderLogoImg
+            src="/octopus-logo.svg"
+            alt="Octopus Energy logo"
+          />
+        </a>
+      </Link>
+    </StyledHeader>
+  );
 }
