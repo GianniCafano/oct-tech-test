@@ -13,6 +13,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: Gotham, helvetica, arial, sans-serif;
+  font-size: 10px;
   color: var(--ice);
 }
 
