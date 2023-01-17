@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { BasketContext, TUserContext } from "../context/BasketContext";
 import {
   StyledProductImage,
   StyledProductSection,
@@ -41,16 +42,24 @@ type TProduct = {
 };
 
 export default function Product() {
+  const { basketQuantity, setBasketQuantity } =
+    useContext<TUserContext>(BasketContext);
+
   const [quantity, setQuantity] = useState<number>(1);
   const decreaseQuantityButtonDisabled = quantity <= 1;
 
-  function handleDecreaseQuantityButtonClick(quantityAmount: number): void {
-    setQuantity(quantityAmount - 1);
+  function handleDecreaseQuantityButtonClick(): void {
+    setQuantity((prevQuantityAmount) => prevQuantityAmount - 1);
   }
 
-  function handleIncreaseQuantityButtonClick(quantityAmount: number): void {
-    setQuantity(quantityAmount + 1);
+  function handleIncreaseQuantityButtonClick(): void {
+    setQuantity((prevQuantityAmount) => prevQuantityAmount + 1);
   }
+
+  function addToBasket(): void {
+    setBasketQuantity(quantity);
+  }
+
   return (
     <>
       <StyledProductSection>
@@ -82,7 +91,7 @@ export default function Product() {
               </StyledProductQuantityControlsDiv>
             </StyledProductQuantityDiv>
           </StyledProductPriceBasketDiv>
-          <StyledProductAddToBasketButton>
+          <StyledProductAddToBasketButton onClick={() => addToBasket()}>
             Add to cart
           </StyledProductAddToBasketButton>
         </StyledProductCtaDiv>
