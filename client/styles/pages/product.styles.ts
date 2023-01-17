@@ -72,7 +72,7 @@ export const StyledProductQuantityNumberSpan = styled.span`
     display: block;
     margin: 0 .6rem;
     font-size: 1.8rem;
-    width: 15px;
+    width: 20px;
     height: 20px;
     text-align: center;
 `
