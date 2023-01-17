@@ -7,5 +7,6 @@ export const StyledFooter = styled.footer`
 
 export const StyledFooterParagraph = styled.p`
     margin: 0;
+    color: ${props => props.theme.colors.purpleHaze};
     font-size: 1.2rem;
 `
