@@ -76,7 +76,7 @@ export default function Product() {
               <StyledProductQuantityControlsDiv>
                 <StyledProductQuantityButton
                   disabled={decreaseQuantityButtonDisabled}
-                  onClick={() => handleDecreaseQuantityButtonClick(quantity)}
+                  onClick={handleDecreaseQuantityButtonClick}
                 >
                   -
                 </StyledProductQuantityButton>
@@ -84,7 +84,7 @@ export default function Product() {
                   {quantity}
                 </StyledProductQuantityNumberSpan>
                 <StyledProductQuantityButton
-                  onClick={() => handleIncreaseQuantityButtonClick(quantity)}
+                  onClick={handleIncreaseQuantityButtonClick}
                 >
                   +
                 </StyledProductQuantityButton>
