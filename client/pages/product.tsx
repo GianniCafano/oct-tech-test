@@ -45,12 +45,10 @@ export default function Product() {
   const decreaseQuantityButtonDisabled = quantity <= 1;
 
   function handleDecreaseQuantityButtonClick(quantityAmount: number): void {
-    //if (decreaseQuantityButtonDisabled) return;
     setQuantity(quantityAmount - 1);
   }
 
   function handleIncreaseQuantityButtonClick(quantityAmount: number): void {
-    //if (decreaseQuantityButtonDisabled) return;
     setQuantity(quantityAmount + 1);
   }
   return (
