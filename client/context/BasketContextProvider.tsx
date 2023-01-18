@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BasketContext, TUserContext } from "./BasketContext";
+import { BasketContext } from "./BasketContext";
 
 export default function BasketContextProvider({ children }) {
   const [basketQuantity, setBasketQuantity] = useState(0);
