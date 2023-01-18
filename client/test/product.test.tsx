@@ -2,6 +2,9 @@ import { render, fireEvent } from "@testing-library/react";
 import Product from "../pages/product";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../styles/theme.styles";
+import { BasketContext } from "../context/BasketContext";
+import BasketContextProvider from "../context/BasketContextProvider";
+import React from "react";
 
 test("should be able to increase and decrease product quantity", async () => {
   const { getByText, getByTitle } = render(
@@ -26,9 +29,11 @@ test("should be able to increase and decrease product quantity", async () => {
 
 test("should be able to add items to the basket", async () => {
   const { getByText, getByTitle } = render(
-    <ThemeProvider theme={theme}>
-      <Product />
-    </ThemeProvider>
+    <BasketContextProvider>
+      <ThemeProvider theme={theme}>
+        <Product />
+      </ThemeProvider>
+    </BasketContextProvider>
   );
 
   const increaseQuantity = getByText("+");
