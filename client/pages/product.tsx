@@ -1,6 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import Layout from "../components/Layout";
 import { BasketContext, TUserContext } from "../context/BasketContext";
+import { getProducts } from "../services/getProducts";
+import { formatPrice } from "../helpers/formatPrice";
+import { TProductProps } from "../types/product.types";
+
 import {
   StyledProductImage,
   StyledProductSection,
@@ -21,28 +25,7 @@ import {
   StyledProductSpecsDl,
 } from "../styles/pages/product.styles";
 
-type TProductProps = {
-  productData: TProduct;
-};
-
-type TProduct = {
-  id: string;
-  name: string;
-  power: string;
-  description: string;
-  price: number;
-  quantity: number;
-  brand: string;
-  weight: number;
-  height: number;
-  width: number;
-  length: number;
-  model_code: string;
-  colour: string;
-  img_url: string;
-};
-
-export default function Product() {
+export default function Product({ productData }: TProductProps) {
   const { setBasketQuantity } = useContext<TUserContext>(BasketContext);
 
   const [quantity, setQuantity] = useState<number>(1);
@@ -63,12 +46,19 @@ export default function Product() {
   return (
     <Layout>
       <StyledProductSection>
-        <StyledProductImage src="https://via.placeholder.com/500" />
-        <StyledProductNameHeader>Product name</StyledProductNameHeader>
-        <StyledProductMetaDiv>25W // Packet of 4</StyledProductMetaDiv>
+        <StyledProductImage
+          src={productData.img_url}
+          alt={`Image for ${productData.name}`}
+        />
+        <StyledProductNameHeader>{productData.name}</StyledProductNameHeader>
+        <StyledProductMetaDiv>
+          {productData.power} // Packet of {productData.quantity}
+        </StyledProductMetaDiv>
         <StyledProductCtaDiv>
           <StyledProductPriceBasketDiv>
-            <StyledProductPriceSpan>£12.99</StyledProductPriceSpan>
+            <StyledProductPriceSpan>
+              £{formatPrice(productData.price)}
+            </StyledProductPriceSpan>
             <StyledProductQuantityDiv>
               <StyledProductQuantityTextSpan>
                 Qty.
@@ -101,9 +91,7 @@ export default function Product() {
           Description
         </StyledProductSubheadingHeader>
         <StyledProductDescriptionParagraph>
-          Available in 7 watts, 9 watts, 11 watts Spiral Light bulb in B22, bulb
-          switches on instantly, no wait around warm start and flicker free
-          features make for a great all purpose bulb
+          {productData.description}
         </StyledProductDescriptionParagraph>
       </StyledProductSection>
       <StyledProductSection>
@@ -113,26 +101,44 @@ export default function Product() {
         <StyledProductSpecsDl>
           <StyledDescriptionSpecsDiv>
             <dt>Brand</dt>
-            <dd>Phillips</dd>
+            <dd>{productData.brand}</dd>
           </StyledDescriptionSpecsDiv>
           <StyledDescriptionSpecsDiv>
             <dt>Item weight (g)</dt>
-            <dd>77</dd>
+            <dd>{productData.weight}</dd>
           </StyledDescriptionSpecsDiv>
           <StyledDescriptionSpecsDiv>
             <dt>Dimensions (cm)</dt>
-            <dd>12.6 x 6.2 x 6.2</dd>
+            <dd>
+              {productData.height} x {productData.width} x {productData.length}
+            </dd>
           </StyledDescriptionSpecsDiv>
           <StyledDescriptionSpecsDiv>
             <dt>Item model number</dt>
-            <dd>E27 ES</dd>
+            <dd>{productData.model_code}</dd>
           </StyledDescriptionSpecsDiv>
           <StyledDescriptionSpecsDiv>
             <dt>Colour</dt>
-            <dd>Cool daylight</dd>
+            <dd>{productData.colour}</dd>
           </StyledDescriptionSpecsDiv>
         </StyledProductSpecsDl>
       </StyledProductSection>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  try {
+    const { data } = await getProducts();
+
+    return {
+      props: {
+        productData: data.allProducts[0],
+      },
+    };
+  } catch {
+    return {
+      notFound: true,
+    };
+  }
 }
