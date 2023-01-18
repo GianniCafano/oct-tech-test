@@ -7,7 +7,6 @@ import { theme } from "../styles/theme.styles";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [basketQuantity, setBasketQuantity] = useState<number>(0);
   return (
     <BasketContextProvider>
       <ThemeProvider theme={theme}>
