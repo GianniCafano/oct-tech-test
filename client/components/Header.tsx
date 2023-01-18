@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 import { StyledHeader, StyledHeaderLogoImg } from "../styles/Header.styles";
+import Basket from "./Basket";
 
 export default function Header() {
   return (
@@ -14,6 +15,7 @@ export default function Header() {
           />
         </a>
       </Link>
+      <Basket />
     </StyledHeader>
   );
 }
