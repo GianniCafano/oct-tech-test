@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import Layout from "../components/Layout";
 import { BasketContext, TUserContext } from "../context/BasketContext";
 import {
   StyledProductImage,
@@ -42,8 +43,7 @@ type TProduct = {
 };
 
 export default function Product() {
-  const { basketQuantity, setBasketQuantity } =
-    useContext<TUserContext>(BasketContext);
+  const { setBasketQuantity } = useContext<TUserContext>(BasketContext);
 
   const [quantity, setQuantity] = useState<number>(1);
   const decreaseQuantityButtonDisabled = quantity <= 1;
@@ -61,7 +61,7 @@ export default function Product() {
   }
 
   return (
-    <>
+    <Layout>
       <StyledProductSection>
         <StyledProductImage src="https://via.placeholder.com/500" />
         <StyledProductNameHeader>Product name</StyledProductNameHeader>
@@ -133,6 +133,6 @@ export default function Product() {
           </StyledDescriptionSpecsDiv>
         </StyledProductSpecsDl>
       </StyledProductSection>
-    </>
+    </Layout>
   );
 }
