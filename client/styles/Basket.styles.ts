@@ -2,8 +2,13 @@ import styled from 'styled-components'
 
 export const StyledBasketDiv = styled.div`
     position: relative;
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
+
+    @media screen and (min-width: ${props => props.theme.screens.sizes.m}) {
+        width: 4rem;
+        height: 4rem;
+    }
 `
 
 export const StyledBasketImg = styled.img`
