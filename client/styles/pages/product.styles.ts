@@ -2,11 +2,15 @@ import styled from 'styled-components'
 
 export const StyledProductImage = styled.img`
     max-width: 100%;
-    margin-bottom: 1.5rem;
     border-radius: 0.8rem;
 
+    @media screen and (min-width: ${props => props.theme.screens.sizes.s}) {
+        max-width: 35rem;
+        margin: 0 auto;
+    }
+
     @media screen and (min-width: ${props => props.theme.screens.sizes.m}) {
-        max-width: 70rem;
+        margin: 0;
     }
 `
 
@@ -21,6 +25,31 @@ export const StyledProductSection = styled.section`
         margin: 0 0 1rem 0;
     }
 
+`
+
+export const StyledProductMainWrapperDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media screen and (min-width: ${props => props.theme.screens.sizes.m}) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+`
+
+export const StyledProductInformationDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    @media screen and (min-width: ${props => props.theme.screens.sizes.s}) {
+        align-self: flex-start;
+    }
+
+    @media screen and (min-width: ${props => props.theme.screens.sizes.m}) {
+        align-self: flex-end;
+    }
 `
 
 export const StyledProductCtaDiv = styled.div`
@@ -87,7 +116,7 @@ export const StyledProductAddToBasketButton = styled.button`
     font-size: 1.6rem;
     cursor: pointer;
     
-    @media screen and (min-width: ${props => props.theme.screens.sizes.m}) {
+    @media screen and (min-width: ${props => props.theme.screens.sizes.sm}) {
         width: 26.5rem;
     }
 `

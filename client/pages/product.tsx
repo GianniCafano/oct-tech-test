@@ -23,6 +23,8 @@ import {
   StyledProductDescriptionParagraph,
   StyledDescriptionSpecsDiv,
   StyledProductSpecsDl,
+  StyledProductMainWrapperDiv,
+  StyledProductInformationDiv,
 } from "../styles/pages/product.styles";
 
 export default function Product({ productData }: TProductProps) {
@@ -46,45 +48,51 @@ export default function Product({ productData }: TProductProps) {
   return (
     <Layout>
       <StyledProductSection>
-        <StyledProductImage
-          src={productData.img_url}
-          alt={`Image for ${productData.name}`}
-        />
-        <StyledProductNameHeader>{productData.name}</StyledProductNameHeader>
-        <StyledProductMetaDiv>
-          {productData.power} // Packet of {productData.quantity}
-        </StyledProductMetaDiv>
-        <StyledProductCtaDiv>
-          <StyledProductPriceBasketDiv>
-            <StyledProductPriceSpan>
-              £{formatPrice(productData.price)}
-            </StyledProductPriceSpan>
-            <StyledProductQuantityDiv>
-              <StyledProductQuantityTextSpan>
-                Qty.
-              </StyledProductQuantityTextSpan>
-              <StyledProductQuantityControlsDiv>
-                <StyledProductQuantityButton
-                  disabled={decreaseQuantityButtonDisabled}
-                  onClick={handleDecreaseQuantityButtonClick}
-                >
-                  -
-                </StyledProductQuantityButton>
-                <StyledProductQuantityNumberSpan title="Current quantity">
-                  {quantity}
-                </StyledProductQuantityNumberSpan>
-                <StyledProductQuantityButton
-                  onClick={handleIncreaseQuantityButtonClick}
-                >
-                  +
-                </StyledProductQuantityButton>
-              </StyledProductQuantityControlsDiv>
-            </StyledProductQuantityDiv>
-          </StyledProductPriceBasketDiv>
-          <StyledProductAddToBasketButton onClick={() => addToBasket()}>
-            Add to cart
-          </StyledProductAddToBasketButton>
-        </StyledProductCtaDiv>
+        <StyledProductMainWrapperDiv>
+          <StyledProductImage
+            src={productData.img_url}
+            alt={`Image for ${productData.name}`}
+          />
+          <StyledProductInformationDiv>
+            <StyledProductNameHeader>
+              {productData.name}
+            </StyledProductNameHeader>
+            <StyledProductMetaDiv>
+              {productData.power} // Packet of {productData.quantity}
+            </StyledProductMetaDiv>
+            <StyledProductCtaDiv>
+              <StyledProductPriceBasketDiv>
+                <StyledProductPriceSpan>
+                  £{formatPrice(productData.price)}
+                </StyledProductPriceSpan>
+                <StyledProductQuantityDiv>
+                  <StyledProductQuantityTextSpan>
+                    Qty.
+                  </StyledProductQuantityTextSpan>
+                  <StyledProductQuantityControlsDiv>
+                    <StyledProductQuantityButton
+                      disabled={decreaseQuantityButtonDisabled}
+                      onClick={handleDecreaseQuantityButtonClick}
+                    >
+                      -
+                    </StyledProductQuantityButton>
+                    <StyledProductQuantityNumberSpan title="Current quantity">
+                      {quantity}
+                    </StyledProductQuantityNumberSpan>
+                    <StyledProductQuantityButton
+                      onClick={handleIncreaseQuantityButtonClick}
+                    >
+                      +
+                    </StyledProductQuantityButton>
+                  </StyledProductQuantityControlsDiv>
+                </StyledProductQuantityDiv>
+              </StyledProductPriceBasketDiv>
+              <StyledProductAddToBasketButton onClick={() => addToBasket()}>
+                Add to cart
+              </StyledProductAddToBasketButton>
+            </StyledProductCtaDiv>
+          </StyledProductInformationDiv>
+        </StyledProductMainWrapperDiv>
       </StyledProductSection>
       <StyledProductSection>
         <StyledProductSubheadingHeader>
