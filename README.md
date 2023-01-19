@@ -68,3 +68,12 @@ Notes:
 - This has not been set up with any type of CSS-in-JS, but if that is something you would like to add, please feel free.
 
 Best of luck!
+
+## Reviewers' notes
+
+- All tests are contained under the tests folder
+- All styles are contained under the styles folder
+- To consume the GraphQl API I have used Apollo Client - I was not too sure what Octopus Energy use, so I went with what I am familiar with
+- I have used Mock Service Worker (msw) to mock my API calls in my tests
+- I fetch the data in the getStaticProps on the product page. I thought this was appropriate as it is an ecommerce page which shouldn't change in terms of content too much. Serving static files will improve speed, performance and is also great for SEO benefits.
+- To store the basket quantity I have used context as I feel in a real ecommerce application, using Context would be the way to go to share it as global state.
